@@ -1,3 +1,5 @@
-# DataStructure
+# Data Structure in Swift
 
-A description of this package.
+Package for your data structure that's not in Swift.
+
+- `LinkedList`
