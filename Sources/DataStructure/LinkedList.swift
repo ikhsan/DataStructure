@@ -97,7 +97,6 @@ extension LinkedList {
 // MARK: - Swift niceties
 
 public class LinkedListIterator<T: Equatable>: IteratorProtocol {
-
     var current: LinkedListNode<T>?
 
     init(_ list: LinkedList<T>) {
@@ -112,7 +111,6 @@ public class LinkedListIterator<T: Equatable>: IteratorProtocol {
 }
 
 extension LinkedList: ExpressibleByArrayLiteral {
-
     public convenience init(arrayLiteral elements: T...) {
         self.init()
 
@@ -128,7 +126,6 @@ extension LinkedList: ExpressibleByArrayLiteral {
             previous = newNode
         }
     }
-
 }
 
 extension LinkedList: Equatable {
