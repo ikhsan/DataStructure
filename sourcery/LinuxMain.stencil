@@ -15,3 +15,5 @@ XCTMain([
 {% for type in types.classes|based:"XCTestCase" %}{% if not type.annotations.disableTests %}  testCase({{ type.name }}.allTests),
 {% endif %}{% endfor %}])
 // swiftlint:enable trailing_comma
+
+// sourcery:end
