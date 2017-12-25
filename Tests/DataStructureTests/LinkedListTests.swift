@@ -95,16 +95,4 @@ class LinkedListTests: XCTestCase {
         XCTAssertEqual(subject2.description, "[I, X, N]")
     }
 
-    static var allTests = [
-        ("testEmpty", testEmpty),
-        ("testNotEmpty", testNotEmpty),
-        ("testPrepend", testPrepend),
-        ("testFirst", testFirst),
-        ("testLast", testLast),
-        ("testReverse", testReverse),
-        ("testReversed", testReversed),
-        ("testIteration", testIteration),
-        ("testStringDescription", testStringDescription),
-    ]
-
 }
