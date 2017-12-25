@@ -7,6 +7,9 @@ import XCTest
 extension LinkedListTests {
   static var allTests: [(String, (LinkedListTests) -> () throws -> Void)] = [
     ("testArrayLiteralInit", testArrayLiteralInit),
+    ("testEquality", testEquality),
+    ("testIteration", testIteration),
+    ("testStringDescription", testStringDescription),
     ("testEmpty", testEmpty),
     ("testNotEmpty", testNotEmpty),
     ("testAppend", testAppend),
@@ -14,9 +17,7 @@ extension LinkedListTests {
     ("testFirst", testFirst),
     ("testLast", testLast),
     ("testReverse", testReverse),
-    ("testReversed", testReversed),
-    ("testIteration", testIteration),
-    ("testStringDescription", testStringDescription)
+    ("testReversed", testReversed)
   ]
 }
 

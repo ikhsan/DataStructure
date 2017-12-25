@@ -1,12 +1,59 @@
 import XCTest
-import DataStructure
+@testable import DataStructure
 
 class LinkedListTests: XCTestCase {
 
+    // MARK: - Swift niceties tests
+
     func testArrayLiteralInit() {
         let subject: LinkedList<Int> = [1, 5, 6]
-        XCTAssertEqual(subject.description, "[1, 5, 6]")
+
+        let expected = LinkedList<Int>()
+        let one = LinkedListNode<Int>(1)
+        expected.head = one
+
+        let five = LinkedListNode<Int>(5)
+        one.next = five
+
+        let six = LinkedListNode<Int>(6)
+        five.next = six
+        XCTAssertEqual(subject, expected)
     }
+
+    func testEquality() {
+        let subject1: LinkedList<Int> = [1, 5, 6]
+        let subject2: LinkedList<Int> = [1, 5, 6, 10]
+        XCTAssertNotEqual(subject1, subject2)
+
+        subject1.append(10)
+        XCTAssertEqual(subject1, subject2)
+    }
+
+    func testIteration() {
+        let subject: LinkedList<String> = ["A", "B", "C"]
+
+        var string = ""
+        for item in subject {
+            string += item.value
+        }
+        XCTAssertEqual(string, "ABC")
+    }
+
+    func testStringDescription() {
+        let subject = LinkedList<Int>()
+        XCTAssertEqual(subject.description, "[]")
+        subject.append(1)
+        XCTAssertEqual(subject.description, "[1]")
+
+        subject.append(5)
+        subject.append(6)
+        XCTAssertEqual(subject.description, "[1, 5, 6]")
+
+        let subject2: LinkedList<String> = ["I", "X", "N"]
+        XCTAssertEqual(subject2.description, "[I, X, N]")
+    }
+
+    // MARK: - Custom method tests
 
     func testEmpty() {
         let subject = LinkedList<Int>()
@@ -24,7 +71,7 @@ class LinkedListTests: XCTestCase {
         subject.append(5)
         subject.append(15)
 
-        XCTAssertEqual(subject.description, "[1, 3, 5, 15]")
+        XCTAssertEqual(subject, [1, 3, 5, 15])
     }
 
     func testPrepend() {
@@ -33,7 +80,7 @@ class LinkedListTests: XCTestCase {
         subject.prepend(5)
         subject.prepend(15)
 
-        XCTAssertEqual(subject.description, "[15, 5, 3, 1]")
+        XCTAssertEqual(subject, [15, 5, 3, 1])
     }
 
     func testFirst() {
@@ -57,42 +104,14 @@ class LinkedListTests: XCTestCase {
         let subject: LinkedList<Int> = [6, 10, 2, 22]
 
         subject.reverse()
-        XCTAssertEqual(subject.description, "[22, 2, 10, 6]")
+        XCTAssertEqual(subject, [22, 2, 10, 6])
     }
 
     func testReversed() {
         let subject: LinkedList<Int> = [6, 10, 2, 22]
 
         let reversed = subject.ds_reversed()
-        XCTAssertEqual(reversed.description, "[22, 2, 10, 6]")
-    }
-
-    func testIteration() {
-        let subject: LinkedList<String> = ["A", "B", "C"]
-
-        var string = ""
-        for item in subject {
-            string += item.value
-        }
-        XCTAssertEqual(string, "ABC")
-    }
-
-    func testStringDescription() {
-        let subject = LinkedList<Int>()
-        XCTAssertEqual(subject.description, "[]")
-
-        subject.append(1)
-        subject.append(5)
-        subject.append(6)
-
-        XCTAssertEqual(subject.description, "[1, 5, 6]")
-
-        let subject2 = LinkedList<String>()
-        subject2.append("I")
-        subject2.append("X")
-        subject2.append("N")
-
-        XCTAssertEqual(subject2.description, "[I, X, N]")
+        XCTAssertEqual(reversed, [22, 2, 10, 6])
     }
 
 }

@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - Node
-public class LinkedListNode<T> {
+public class LinkedListNode<T: Equatable> {
     public var value: T
     public var next: LinkedListNode<T>? = nil
 
@@ -12,7 +12,7 @@ public class LinkedListNode<T> {
 
 // MARK: - LinkedList
 
-public final class LinkedList<T> {
+public final class LinkedList<T: Equatable> {
     public var head: LinkedListNode<T>?
 
     public init() {
@@ -96,7 +96,7 @@ extension LinkedList {
 
 // MARK: - Swift niceties
 
-public class LinkedListIterator<T>: IteratorProtocol {
+public class LinkedListIterator<T: Equatable>: IteratorProtocol {
 
     var current: LinkedListNode<T>?
 
@@ -129,6 +129,24 @@ extension LinkedList: ExpressibleByArrayLiteral {
         }
     }
 
+}
+
+extension LinkedList: Equatable {
+    public static func ==(lhs: LinkedList, rhs: LinkedList) -> Bool {
+        var leftValue = lhs.head
+        var rightValue = rhs.head
+
+        while (leftValue != nil && rightValue != nil) {
+            leftValue = leftValue?.next
+            rightValue = rightValue?.next
+
+            if (leftValue?.value != rightValue?.value) {
+                return false
+            }
+        }
+
+        return true
+    }
 }
 
 extension LinkedList: Sequence {
