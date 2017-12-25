@@ -6,8 +6,10 @@ import XCTest
 
 extension LinkedListTests {
   static var allTests: [(String, (LinkedListTests) -> () throws -> Void)] = [
+    ("testArrayLiteralInit", testArrayLiteralInit),
     ("testEmpty", testEmpty),
     ("testNotEmpty", testNotEmpty),
+    ("testAppend", testAppend),
     ("testPrepend", testPrepend),
     ("testFirst", testFirst),
     ("testLast", testLast),

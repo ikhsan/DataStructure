@@ -3,21 +3,32 @@ import DataStructure
 
 class LinkedListTests: XCTestCase {
 
+    func testArrayLiteralInit() {
+        let subject: LinkedList<Int> = [1, 5, 6]
+        XCTAssertEqual(subject.description, "[1, 5, 6]")
+    }
+
     func testEmpty() {
         let subject = LinkedList<Int>()
         XCTAssert(subject.isEmpty)
     }
 
     func testNotEmpty() {
-        let subject = LinkedList<Int>()
-        subject.append(4)
-
+        let subject: LinkedList<Int> = [4]
         XCTAssertFalse(subject.isEmpty)
     }
 
+    func testAppend() {
+        let subject: LinkedList<Int> = [1]
+        subject.append(3)
+        subject.append(5)
+        subject.append(15)
+
+        XCTAssertEqual(subject.description, "[1, 3, 5, 15]")
+    }
+
     func testPrepend() {
-        let subject = LinkedList<Int>()
-        subject.append(1)
+        let subject: LinkedList<Int> = [1]
         subject.prepend(3)
         subject.prepend(5)
         subject.prepend(15)
@@ -43,32 +54,21 @@ class LinkedListTests: XCTestCase {
     }
 
     func testReverse() {
-        let subject = LinkedList<Int>()
-        subject.append(6)
-        subject.append(10)
-        subject.append(2)
-        subject.append(22)
+        let subject: LinkedList<Int> = [6, 10, 2, 22]
 
         subject.reverse()
         XCTAssertEqual(subject.description, "[22, 2, 10, 6]")
     }
 
     func testReversed() {
-        let subject = LinkedList<Int>()
-        subject.append(6)
-        subject.append(10)
-        subject.append(2)
-        subject.append(22)
+        let subject: LinkedList<Int> = [6, 10, 2, 22]
 
         let reversed = subject.ds_reversed()
         XCTAssertEqual(reversed.description, "[22, 2, 10, 6]")
     }
 
     func testIteration() {
-        let subject = LinkedList<String>()
-        subject.append("A")
-        subject.append("B")
-        subject.append("C")
+        let subject: LinkedList<String> = ["A", "B", "C"]
 
         var string = ""
         for item in subject {

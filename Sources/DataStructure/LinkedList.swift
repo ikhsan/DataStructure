@@ -12,7 +12,7 @@ public class LinkedListNode<T> {
 
 // MARK: - LinkedList
 
-public class LinkedList<T> {
+public final class LinkedList<T> {
     public var head: LinkedListNode<T>?
 
     public init() {
@@ -109,6 +109,26 @@ public class LinkedListIterator<T>: IteratorProtocol {
         current = current?.next
         return node
     }
+}
+
+extension LinkedList: ExpressibleByArrayLiteral {
+
+    public convenience init(arrayLiteral elements: T...) {
+        self.init()
+
+        var previous: LinkedListNode<T>? = nil
+
+        for element in elements {
+            let newNode = LinkedListNode<T>(element)
+            previous?.next = newNode
+
+            if head == nil {
+                head = newNode
+            }
+            previous = newNode
+        }
+    }
+
 }
 
 extension LinkedList: Sequence {
