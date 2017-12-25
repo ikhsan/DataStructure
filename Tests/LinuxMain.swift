@@ -1,5 +1,5 @@
 import XCTest
-import DataStructure
+import DataStructureTests
 
 XCTMain([
     testCase(LinkedListTests.allTests),
