@@ -9,13 +9,13 @@ class LinkedListTests: XCTestCase {
         let subject: LinkedList<Int> = [1, 5, 6]
 
         let expected = LinkedList<Int>()
-        let one = LinkedListNode<Int>(1)
+        let one = LinkedList.Node(1)
         expected.head = one
 
-        let five = LinkedListNode<Int>(5)
+        let five = LinkedList.Node(5)
         one.next = five
 
-        let six = LinkedListNode<Int>(6)
+        let six = LinkedList.Node(6)
         five.next = six
         XCTAssertEqual(subject, expected)
     }

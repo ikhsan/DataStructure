@@ -1,19 +1,18 @@
 import Foundation
 
-// MARK: - Node
-public class LinkedListNode<T: Equatable> {
-    public var value: T
-    public var next: LinkedListNode<T>? = nil
-
-    public init(_ value: T) {
-        self.value = value
-    }
-}
-
 // MARK: - LinkedList
 
 public final class LinkedList<T: Equatable> {
-    public var head: LinkedListNode<T>?
+    public class Node {
+        public var value: T
+        public var next: Node? = nil
+
+        public init(_ value: T) {
+            self.value = value
+        }
+    }
+
+    public var head: Node?
 
     public init() {
         self.head = nil
@@ -28,7 +27,7 @@ extension LinkedList {
     }
 
     public func append(_ value: T) {
-        let newNode = LinkedListNode(value)
+        let newNode = Node(value)
         guard head != nil else {
             head = newNode
             return
@@ -42,7 +41,7 @@ extension LinkedList {
     }
 
     public func prepend(_ value: T) {
-        let node = LinkedListNode(value)
+        let node = Node(value)
         node.next = head
         head = node
     }
@@ -65,8 +64,8 @@ extension LinkedList {
         if (head?.next == nil) { return }
 
         var node = head
-        var next: LinkedListNode<T>? = nil
-        var previous: LinkedListNode<T>? = nil
+        var next: LinkedList<T>.Node? = nil
+        var previous: LinkedList<T>.Node? = nil
 
         while (node != nil) {
             head = node
@@ -96,28 +95,14 @@ extension LinkedList {
 
 // MARK: - Swift niceties
 
-public class LinkedListIterator<T: Equatable>: IteratorProtocol {
-    var current: LinkedListNode<T>?
-
-    init(_ list: LinkedList<T>) {
-        current = list.head
-    }
-
-    public func next() -> LinkedListNode<T>? {
-        let node = current
-        current = current?.next
-        return node
-    }
-}
-
 extension LinkedList: ExpressibleByArrayLiteral {
     public convenience init(arrayLiteral elements: T...) {
         self.init()
 
-        var previous: LinkedListNode<T>? = nil
+        var previous: Node? = nil
 
         for element in elements {
-            let newNode = LinkedListNode<T>(element)
+            let newNode = Node(element)
             previous?.next = newNode
 
             if head == nil {
@@ -143,6 +128,22 @@ extension LinkedList: Equatable {
         }
 
         return true
+    }
+}
+
+public class LinkedListIterator<T: Equatable>: IteratorProtocol {
+    public typealias Element = LinkedList<T>.Node
+
+    var current: Element?
+
+    init(_ list: LinkedList<T>) {
+        current = list.head
+    }
+
+    public func next() -> Element? {
+        let node = current
+        current = current?.next
+        return node
     }
 }
 
