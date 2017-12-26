@@ -1,7 +1,5 @@
 import Foundation
 
-// MARK: - LinkedList
-
 public final class LinkedList<T: Equatable> {
     public class Node {
         public var value: T
@@ -18,8 +16,6 @@ public final class LinkedList<T: Equatable> {
         self.head = nil
     }
 }
-
-// MARK: - Methods
 
 extension LinkedList {
     public var isEmpty: Bool {

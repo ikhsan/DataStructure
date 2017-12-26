@@ -20,9 +20,20 @@ extension LinkedListTests {
     ("testReversed", testReversed)
   ]
 }
+extension StackTests {
+  static var allTests: [(String, (StackTests) -> () throws -> Void)] = [
+    ("testEmpty", testEmpty),
+    ("testPeekEmptyStack", testPeekEmptyStack),
+    ("testPush", testPush),
+    ("testPopEmptyStack", testPopEmptyStack),
+    ("testPop", testPop),
+    ("testDescription", testDescription)
+  ]
+}
 
 // swiftlint:disable trailing_comma
 XCTMain([
   testCase(LinkedListTests.allTests),
+  testCase(StackTests.allTests),
 ])
 // swiftlint:enable trailing_comma
