@@ -20,6 +20,17 @@ extension LinkedListTests {
     ("testReversed", testReversed)
   ]
 }
+extension QueueTests {
+  static var allTests: [(String, (QueueTests) -> () throws -> Void)] = [
+    ("testEmpty", testEmpty),
+    ("testPeekEmptyStack", testPeekEmptyStack),
+    ("testEnqueue", testEnqueue),
+    ("testDequeueEmptyStack", testDequeueEmptyStack),
+    ("testDequeue", testDequeue),
+    ("testQueueCleanup", testQueueCleanup),
+    ("testDescription", testDescription)
+  ]
+}
 extension StackTests {
   static var allTests: [(String, (StackTests) -> () throws -> Void)] = [
     ("testEmpty", testEmpty),
@@ -34,6 +45,7 @@ extension StackTests {
 // swiftlint:disable trailing_comma
 XCTMain([
   testCase(LinkedListTests.allTests),
+  testCase(QueueTests.allTests),
   testCase(StackTests.allTests),
 ])
 // swiftlint:enable trailing_comma

@@ -33,8 +33,7 @@ class StackTests: XCTestCase {
         subject.push(5)
         subject.push(6)
 
-        let value = subject.pop()
-        XCTAssertEqual(value, 6)
+        XCTAssertEqual(subject.pop(), 6)
         XCTAssertEqual(subject.peek(), 5)
     }
 

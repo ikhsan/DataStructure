@@ -1,6 +1,6 @@
 import Foundation
 
-public class Stack<T: Equatable> {
+public class Stack<T> {
 
     public class Node {
         public var value: T
