@@ -114,6 +114,12 @@ extension LinkedList: Equatable {
         var leftValue = lhs.head
         var rightValue = rhs.head
 
+        switch (leftValue, rightValue) {
+        case (_?, nil): return false
+        case (nil, _?): return false
+        default: break
+        }
+
         while (leftValue != nil && rightValue != nil) {
             leftValue = leftValue?.next
             rightValue = rightValue?.next

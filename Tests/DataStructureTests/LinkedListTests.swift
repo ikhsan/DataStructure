@@ -25,6 +25,11 @@ class LinkedListTests: XCTestCase {
         let subject2: LinkedList<Int> = [1, 5, 6, 10]
         XCTAssertNotEqual(subject1, subject2)
 
+        XCTAssertNotEqual(subject1, LinkedList<Int>())
+        XCTAssertNotEqual(LinkedList<Int>(), subject1)
+
+        XCTAssertEqual(LinkedList<Int>(), LinkedList<Int>())
+
         subject1.append(10)
         XCTAssertEqual(subject1, subject2)
     }
