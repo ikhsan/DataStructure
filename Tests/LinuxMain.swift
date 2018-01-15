@@ -54,6 +54,13 @@ extension StackTests {
     ("testDescription", testDescription)
   ]
 }
+extension TreeTests {
+  static var allTests: [(String, (TreeTests) -> () throws -> Void)] = [
+    ("testIsNodeLeaf", testIsNodeLeaf),
+    ("testChildrenCount", testChildrenCount),
+    ("testDescription", testDescription)
+  ]
+}
 
 // swiftlint:disable trailing_comma
 XCTMain([
@@ -61,5 +68,6 @@ XCTMain([
   testCase(LinkedListTests.allTests),
   testCase(QueueTests.allTests),
   testCase(StackTests.allTests),
+  testCase(TreeTests.allTests),
 ])
 // swiftlint:enable trailing_comma

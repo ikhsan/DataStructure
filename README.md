@@ -4,6 +4,8 @@
 ![Swift 4](https://img.shields.io/badge/Swift-4.0-orange.svg)
 [![SPM](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
-Package for your data structure that's not in Swift.
+Data structure that's not in Swift standard library.
 
 - `LinkedList`
+- `Queue`
+- `Stack`
