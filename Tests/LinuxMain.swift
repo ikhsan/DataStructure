@@ -4,6 +4,19 @@
 import XCTest
 @testable import DataStructureTests
 
+extension GraphTests {
+  static var allTests: [(String, (GraphTests) -> () throws -> Void)] = [
+    ("testInitWithStrings", testInitWithStrings),
+    ("testAddVertices", testAddVertices),
+    ("testGetVertices", testGetVertices),
+    ("testGetUnknownVertices", testGetUnknownVertices),
+    ("testGetEdges", testGetEdges),
+    ("testGetStringEdges", testGetStringEdges),
+    ("testAddEdges", testAddEdges),
+    ("testAddEdgesWithExcludedVertex", testAddEdgesWithExcludedVertex),
+    ("testAddStringEdges", testAddStringEdges)
+  ]
+}
 extension LinkedListTests {
   static var allTests: [(String, (LinkedListTests) -> () throws -> Void)] = [
     ("testArrayLiteralInit", testArrayLiteralInit),
@@ -44,6 +57,7 @@ extension StackTests {
 
 // swiftlint:disable trailing_comma
 XCTMain([
+  testCase(GraphTests.allTests),
   testCase(LinkedListTests.allTests),
   testCase(QueueTests.allTests),
   testCase(StackTests.allTests),
