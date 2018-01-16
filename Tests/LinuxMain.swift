@@ -4,6 +4,12 @@
 import XCTest
 @testable import DataStructureTests
 
+extension BinaryTreeTests {
+  static var allTests: [(String, (BinaryTreeTests) -> () throws -> Void)] = [
+    ("testDescription", testDescription),
+    ("testEquality", testEquality)
+  ]
+}
 extension GraphTests {
   static var allTests: [(String, (GraphTests) -> () throws -> Void)] = [
     ("testInitWithStrings", testInitWithStrings),
@@ -64,6 +70,7 @@ extension TreeTests {
 
 // swiftlint:disable trailing_comma
 XCTMain([
+  testCase(BinaryTreeTests.allTests),
   testCase(GraphTests.allTests),
   testCase(LinkedListTests.allTests),
   testCase(QueueTests.allTests),
